@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Units</h1>
+<%= link_to "New unit", new_unit_path, class: "btn btn-secondary" %>
+
+<div id="units">
+<table class="table">
+  <% @units.each do |unit| %>
+    <tr>
+    <td>
+    <%= render unit %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_unit_path(unit), class: "btn btn-secondary btn-sm" %>
+    </td>
+    <td>
+      <%= button_to "Delete", unit, method: :delete, class: "btn btn-secondary btn-sm" %>
+    </td>
+    </tr>
+  <% end %>
+</div>
+
+

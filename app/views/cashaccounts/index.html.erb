@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cash Accounts</h1>
+<%= link_to "New cashaccount", new_cashaccount_path, class: "btn btn-secondary" %>
+
+<div id="cashaccounts">
+<table class="table">
+  <% @cashaccounts.each do |cashaccount| %>
+    <tr>
+    <td>
+    <%= render cashaccount %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_cashaccount_path(cashaccount), class: "btn btn-secondary btn-sm" %>
+      </td>
+      <td>
+      <%= button_to "Delete", cashaccount, method: :delete, class: "btn btn-secondary btn-sm" %>
+      </td>
+      </tr>
+  <% end %>
+</div>
+
+

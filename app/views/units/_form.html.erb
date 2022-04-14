@@ -1,0 +1,37 @@
+<%= form_with(model: unit) do |form| %>
+  <% if unit.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+
+      <ul>
+        <% unit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :conversion_formula, style: "display: block" %>
+    <%= form.text_field :conversion_formula %>
+  </div>
+
+  <div>
+    <%= form.label :is_based, style: "display: block" %>
+    <%= form.check_box :is_based %>
+  </div>
+
+  <div>
+    <%= form.label :based_unit, style: "display: block" %>
+    <%= form.text_field :based_unit %>
+  </div>
+
+  <div class='mt-2'>
+    <%= form.submit %>
+  </div>
+<% end %>

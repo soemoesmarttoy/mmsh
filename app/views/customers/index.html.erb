@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Customers</h1>
+<%= link_to "New customer", new_customer_path, class: "btn btn-secondary" %>
+<div id="customers">
+<table class="table">
+  <% @customers.each do |customer| %>
+    <tr>
+    <td>
+    <%= render customer %>   
+    </td>
+    <td>
+    <%= link_to "Edit", edit_customer_path(customer), class: "btn btn-secondary btn-sm" %>
+    </td>
+    <td>
+    <%= button_to "Delete", customer, method: :delete, class: "btn btn-secondary btn-sm" %>
+    </td>
+    </tr>
+  <% end %>
+</div>
+
+

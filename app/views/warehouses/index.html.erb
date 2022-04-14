@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Warehouses</h1>
+<%= link_to "New warehouse", new_warehouse_path, class: "btn btn-secondary" %>
+<div id="warehouses">
+<table class="table">
+  <% @warehouses.each do |warehouse| %>
+    <tr>
+    <td>
+    <%= render warehouse %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_warehouse_path(warehouse), class: "btn btn-secondary btn-sm" %>
+    </td>
+    <td>
+      <%= button_to "Delete", warehouse, method: :delete, class: "btn btn-secondary btn-sm" %>
+    </td>
+    </tr>
+  <% end %>
+</div>
+
+
