@@ -21,5 +21,5 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_PWD'] %>
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
