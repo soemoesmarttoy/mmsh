@@ -4,9 +4,9 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :unit_price
       t.float :quantity
-      t.references :unit, null: false, foreign_key: true
-      t.references :warehouse, null: false, foreign_key: true
-      t.references :category, null: false, foreign_key: true
+      #t.references :unit, null: false, foreign_key: true
+      #t.references :warehouse, null: false, foreign_key: true
+      #t.references :category, null: false, foreign_key: true
 
       t.timestamps
     end
