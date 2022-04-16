@@ -1,9 +1,10 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /units or /units.json
   def index
-    @units = Unit.all
+    @units = current_user.company.units.all
   end 
 
   # GET /units/new
@@ -61,6 +62,6 @@ class UnitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def unit_params
-      params.require(:unit).permit(:name, :conversion_formula, :is_based, :based_unit)
+      params.require(:unit).permit(:name, :conversion_formula, :is_based, :based_unit,:company_id)
     end
 end

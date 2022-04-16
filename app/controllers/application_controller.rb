@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
-    def after_sign_in_path_for(user)
-        if current_user.company_id?        
-            products_path
-        else
-            new_company_path
+    before_action :configure_permitted_parameters, if: :devise_controller?
+    
+
+    protected
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+            user_params.permit(:email, :password, :password_confirmation, :company_id)
         end
     end
+
 end

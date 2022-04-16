@@ -17,12 +17,12 @@
   </div>
   <div>
     <%= form.label :category_id, style: "display: block" %>
-    <%= form.collection_select :category_id, Category.all.order(:name), :id, :name %>
+    <%= form.collection_select :category_id, current_user.company.categories.all.order(:name), :id, :name %>
   </div>
 
   <div>
   <%= form.label :unit_id, style: "display: block" %>
-  <%= form.collection_select :unit_id, Unit.all.order(:name), :id, :name %>
+  <%= form.collection_select :unit_id, current_user.company.units.all.order(:name), :id, :name %>
   </div>
 
   <div>
@@ -37,7 +37,8 @@
 
   <div>
     <%= form.label :warehouse_id, style: "display: block" %>
-    <%= form.collection_select :warehouse_id, Warehouse.all.order(:name), :id, :name %>
+    <%= form.collection_select :warehouse_id, current_user.company.warehouses.all.order(:name), :id, :name %>
+    <%= form.hidden_field :company_id, value:current_user.company.id %>
     
   </div> 
 

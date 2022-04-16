@@ -1,20 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Company</h1>
 <div id="companies">
 <table class="table">
   <% @companies.each do |company| %>
+    <% if current_user.company == company %>
     <tr>
     <td>
     <%= render company %>
     </td>
     <td>
       <%= link_to "Edit", edit_company_path(company), class: "btn btn-secondary btn-sm" %>
-    </td>
-    <td>
-      <%= button_to "Delete", company, method: :delete, class: "btn btn-secondary btn-sm" %>
-    </td>
+    </td>    
     </tr>
+    <% end %>
   <% end %>
 </div>
 

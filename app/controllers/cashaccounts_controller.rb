@@ -1,9 +1,10 @@
 class CashaccountsController < ApplicationController
   before_action :set_cashaccount, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /cashaccounts or /cashaccounts.json
   def index
-    @cashaccounts = Cashaccount.all
+    @cashaccounts = current_user.company.cashaccounts.all
   end
 
   # GET /cashaccounts/new
@@ -61,6 +62,6 @@ class CashaccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cashaccount_params
-      params.require(:cashaccount).permit(:name, :amount)
+      params.require(:cashaccount).permit(:name, :amount, :company_id)
     end
 end

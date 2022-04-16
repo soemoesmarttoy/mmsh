@@ -1,16 +1,9 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[ show edit update destroy ]
-  before_action :user_company_id_exist?, only: %i[create]
-
-  def user_company_id_exist?
-    if current_user.company_id?
-      return render file: "#{Rails.root}/public/422.html", layout: false
-    end
-  end
 
   # GET /companies or /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all()
   end
 
   # GET /companies/1 or /companies/1.json
@@ -31,10 +24,8 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     respond_to do |format|
-      if @company.save
-        current_user.company_id = @company.id
-        current_user.save
-        format.html { redirect_to companies_url, notice: "Company was successfully created." }
+      if @company.save        
+        format.html { redirect_to new_user_registration_url, notice: "Company was successfully created." }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,14 +48,14 @@ class CompaniesController < ApplicationController
   end
 
   # DELETE /companies/1 or /companies/1.json
-  def destroy
-    @company.destroy
+  # def destroy
+  #   @company.destroy
 
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: "Company was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to companies_url, notice: "Company was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

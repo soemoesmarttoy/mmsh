@@ -1,9 +1,10 @@
 class WarehousesController < ApplicationController
   before_action :set_warehouse, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /warehouses or /warehouses.json
   def index
-    @warehouses = Warehouse.all
+    @warehouses = current_user.company.warehouses.all
   end
   
   # GET /warehouses/new
@@ -61,6 +62,6 @@ class WarehousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def warehouse_params
-      params.require(:warehouse).permit(:name, :value)
+      params.require(:warehouse).permit(:name, :value, :company_id)
     end
 end

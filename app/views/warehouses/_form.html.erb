@@ -19,6 +19,7 @@
   <div>
     <%= form.label :value, style: "display: block" %>
     <%= form.number_field :value %>
+    <%= form.hidden_field :company_id, value:current_user.company.id %>
   </div>
 
   <div class='mt-2'>

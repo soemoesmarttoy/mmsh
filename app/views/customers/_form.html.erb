@@ -24,6 +24,7 @@
   <div>
     <%= form.label :address, style: "display: block" %>
     <%= form.text_area :address %>
+    <%= form.hidden_field :company_id, value:current_user.company.id %>
   </div>
 
   <div class='mt-1'>
